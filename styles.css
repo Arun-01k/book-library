@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #345;
+}
+
+header {
+    text-align: center;
+    padding: 1rem;
+    background-color: #191919;
+    color: white;
+}
+
+#container {
+    width: 80%;
+    background-color: #9ab;
+    align-self: center;
+    min-height: 100vh;
+}
+
+h3 {
+    text-align: center;
+    padding: 1.5 rem;
+}
+
+#for-books-display {
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.cards {
+    flex: 0 1 calc(100% / 5);
+    aspect-ratio: 1/1.5;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: 2px solid black;
+    padding: 0.5rem;
+}
+
+.cards > * {
+    flex: 1;
+}
