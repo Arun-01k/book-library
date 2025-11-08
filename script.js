@@ -31,8 +31,13 @@ const booksDisplayContainer = document.querySelector("#for-books-display");
 function dynamicBookAddition() {
     booksDisplayContainer.innerHTML = '';
     myLibrary.forEach((item)=> {
+        const removeBtn = document.createElement("button");
+        removeBtn.classList.add("removeBtn");
+        removeBtn.textContent = 'x';
+
         const content = document.createElement("div");
         content.classList.add("cards");
+        content.dataset.id = item.id;
 
         const title = document.createElement("h4");
         title.classList.add("title");
@@ -50,7 +55,7 @@ function dynamicBookAddition() {
         status.classList.add("status");
         status.textContent = `Status: ${item.read}`;
 
-        content.append(title, author, pages, status);
+        content.append(removeBtn, title, author, pages, status);
         booksDisplayContainer.append(content);
     }
     );
@@ -84,3 +89,13 @@ form.addEventListener("submit", (e)=> {
 
 const closeBtn = document.querySelector("#close-btn")
 closeBtn.addEventListener("click", ()=> dialog.close());
+
+booksDisplayContainer.addEventListener("click", (e)=> {
+    if(e.target.classList.contains("removeBtn")) {
+        const removeCard = e.target.closest(".cards");
+
+        const removeCardId = myLibrary.findIndex(item => item.id = removeCard.dataset.id);
+        myLibrary.splice(removeCardId, 1);
+        removeCard.remove();
+    }
+})
