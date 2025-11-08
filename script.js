@@ -58,4 +58,29 @@ function dynamicBookAddition() {
 
 dynamicBookAddition();
 
-addBookToLibrary('white nights','fyodor',145,true);
+const addBookBtn = document.querySelector("#add-book");
+const dialog = document.querySelector("#dialog");
+
+addBookBtn.addEventListener('click', ()=> dialog.showModal());
+
+const form = document.querySelector("form");
+
+form.addEventListener("submit", (e)=> { 
+    e.preventDefault();
+    const title = document.querySelector("#title-input").value.trim();
+    const author = document.querySelector("#author-input").value.trim();
+    const pages = parseInt(document.querySelector("#pages-input").value);
+    const status = document.querySelector("#status-input").value.trim();
+
+    if (!title || !author || !pages || !status) {
+    alert("Please fill in all fields!");
+    return;}
+    
+    addBookToLibrary(title, author, pages, status);
+
+    dialog.close();
+    form.reset();
+});
+
+const closeBtn = document.querySelector("#close-btn")
+closeBtn.addEventListener("click", ()=> dialog.close());
